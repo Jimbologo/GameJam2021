@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HeadController : MonoBehaviour
 {
@@ -25,6 +26,12 @@ public class HeadController : MonoBehaviour
     [SerializeField]
     private float waitingTime = 1f;
 
+    [SerializeField]
+    private TextMeshPro shiftTimer;
+
+    [SerializeField]
+    private float decreaseTimeSpeed = 0.1f;
+
     private void Start()
     {
         for (int i = 0; i < numberOfHeads; ++i)
@@ -32,10 +39,31 @@ public class HeadController : MonoBehaviour
             GameObject newHead = Instantiate(headPrefab, transform);
             heads.Add(newHead.transform);
             headIndexs.Add(i);
-            newHead.GetComponent<Head>().Setup(numberOfHeads, i, speed, headDistancing, waitingTime, Random.Range(2,10)); ;
+            newHead.GetComponent<Head>().Setup(this, numberOfHeads, i, speed, headDistancing, waitingTime, Random.Range(2,10)); ;
         }
+
+        StartCoroutine(decreaseWaitingTime());
     }
 
+    public IEnumerator decreaseWaitingTime()
+    {
+        while(active && waitingTime > 1)
+        {
+            waitingTime -= Time.deltaTime * decreaseTimeSpeed;
+            for (int i = 0; i < heads.Count; ++i)
+            {
+                heads[i].GetComponent<Head>().UpdateTime(waitingTime);
+            }
+            
+            yield return null;
+        }
+        yield return null;
+    }
+
+    public void UpdateShiftTimer(float time)
+    {
+        shiftTimer.text = "" + time;
+    }
 
 
 }

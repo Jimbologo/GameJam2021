@@ -16,6 +16,12 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private float spawnRange = 2f;
 
+    [SerializeField]
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip marshSpawn;
+
+
     private void Update()
     {
         if(Input.GetKey(KeyCode.DownArrow))
@@ -28,6 +34,9 @@ public class Spawner : MonoBehaviour
                 GameObject newMarsh = Instantiate(marshmellow, transform.position + new Vector3(Random.Range(-spawnRange, spawnRange),0,0), Quaternion.Euler(Random.Range(0,180), Random.Range(0, 180), Random.Range(0, 180))); ;
                 newMarsh.transform.parent = transform;
                 marshmelows.Add(newMarsh);
+                audioSource.clip = marshSpawn;
+                audioSource.Play(); 
+
             }
         }
     }
