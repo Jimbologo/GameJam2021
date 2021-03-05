@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.VFX;
 
 public class MouthController : MonoBehaviour
 {
@@ -31,6 +32,14 @@ public class MouthController : MonoBehaviour
 
     bool chewed = false;
 
+    [SerializeField]
+    private VisualEffect visualEffect;
+
+    private void Start()
+    {
+        visualEffect.Stop();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         other.transform.parent = transform;
@@ -53,7 +62,7 @@ public class MouthController : MonoBehaviour
             anim.Play(shakeHeadAnim.name);
             audioSource.clip = mouthShake;
             audioSource.Play();
-
+            visualEffect.Play();
             //headController.StopAllCoroutines();
             headController.active = false;
             StartCoroutine(headController.RemovePerson());
@@ -91,6 +100,7 @@ public class MouthController : MonoBehaviour
         if(!anim.isPlaying & isDrowning)
         {
             isDrowning = false;
+            visualEffect.Stop();
         }
     }
 

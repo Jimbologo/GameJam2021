@@ -44,7 +44,7 @@ public class HeadController : MonoBehaviour
             newHead.GetComponent<Head>().Setup(this, numberOfHeads, i, speed, headDistancing, waitingTime, Random.Range(2,10), Random.Range(2, 10)); ;
         }
 
-        StartCoroutine(decreaseWaitingTime());
+        //StartCoroutine(decreaseWaitingTime());
     }
 
     public IEnumerator decreaseWaitingTime()

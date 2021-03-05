@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 public class Head : MonoBehaviour
 {
     [SerializeField]
@@ -51,6 +52,8 @@ public class Head : MonoBehaviour
     private Color skinDeadColor;
 
     private bool dead = false;
+
+   
 
     public void Setup(HeadController headController, int a_maxHeads, int a_index, float a_speed, float a_headDist, float a_waitTime, int maxObjs, int maxObjs2)
     {
@@ -162,7 +165,7 @@ public class Head : MonoBehaviour
             head.heads[i].GetComponent<Head>().paused = true;
         }
         //Turn Blue
-        float timer = 1f;
+        float timer = 2.5f;
         while(timer >= 0)
         {
             timer -= Time.deltaTime;
