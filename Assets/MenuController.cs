@@ -38,6 +38,11 @@ public class MenuController : MonoBehaviour
                 hit.transform.position = newPos;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

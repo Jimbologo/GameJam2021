@@ -47,6 +47,14 @@ public class HeadController : MonoBehaviour
         //StartCoroutine(decreaseWaitingTime());
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManagment.instance.LoadScene(CustomScenes.MainMenu);
+        }
+    }
+
     public IEnumerator decreaseWaitingTime()
     {
         while(active && waitingTime > 1)

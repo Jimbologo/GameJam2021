@@ -275,10 +275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d9ca353569546458de8667c0a87651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  msg: Well Jim.... You did it,  You actually killed them all!     Screw you... Beam
-    me up scotty!
+  msg: Well Jim.... You did it,  You actually killed them all!     always the same
+    with you... Beam me up scotty!
   text: {fileID: 1604937584}
-  lagTime: 0.2
+  lagTime: 0.15
 --- !u!114 &204880043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,8 +616,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Well Jim.... You did it,  You actually killed them all!     Screw you...
-    Beam me up scotty!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
