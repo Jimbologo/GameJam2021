@@ -9,6 +9,8 @@ public class MarshmellowDrop : MonoBehaviour
     [SerializeField]
     private AudioClip marshHit;
 
+    public bool isWater = false;
+
     private void OnCollisionEnter(Collision collision)
     {
         audioSource.clip = marshHit;

@@ -10,6 +10,7 @@ public class Head : MonoBehaviour
 
     private HeadController head;
     public int maxmarshCount = 5;
+    public int maxWaterCount = 5;
     private int maxHeads = 5;
     private int index = 0;
     private Vector3 targetPos = Vector3.zero;
@@ -34,14 +35,11 @@ public class Head : MonoBehaviour
     [SerializeField]
     private AudioClip mouthClose;
 
-    [SerializeField]
-    private TextMeshPro countText = null;
-
     private float shiftTimer = 0f;
 
     private bool speedUp = false;
 
-    public void Setup(HeadController headController, int a_maxHeads, int a_index, float a_speed, float a_headDist, float a_waitTime, int maxObjs)
+    public void Setup(HeadController headController, int a_maxHeads, int a_index, float a_speed, float a_headDist, float a_waitTime, int maxObjs, int maxObjs2)
     {
         head = headController;
         maxHeads = a_maxHeads;
@@ -50,9 +48,10 @@ public class Head : MonoBehaviour
         headDistancing = a_headDist;
         waitTime = a_waitTime;
         maxmarshCount = maxObjs;
+        maxWaterCount = maxObjs2;
         transform.localPosition = new Vector3(index * headDistancing, -5, 0);
 
-        countText.text = "" + maxmarshCount;
+        mouthController.ResetObj();
 
         StartCoroutine(MoveHeads());
     }

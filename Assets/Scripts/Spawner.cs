@@ -76,5 +76,8 @@ public class Spawner : MonoBehaviour
         Vector3 lookDir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
         Quaternion rotation = Quaternion.LookRotation(lookDir, Vector3.right);
         transform.rotation = Quaternion.Lerp(transform.rotation, rotation, lookSpeed * Time.deltaTime);
+
+        //transform.eulerAngles = new Vector3(transform.eulerAngles.x, Mathf.Clamp(transform.eulerAngles.y, -88, -91), -180);
+        
     }
 }

@@ -39,7 +39,7 @@ public class HeadController : MonoBehaviour
             GameObject newHead = Instantiate(headPrefab, transform);
             heads.Add(newHead.transform);
             headIndexs.Add(i);
-            newHead.GetComponent<Head>().Setup(this, numberOfHeads, i, speed, headDistancing, waitingTime, Random.Range(2,10)); ;
+            newHead.GetComponent<Head>().Setup(this, numberOfHeads, i, speed, headDistancing, waitingTime, Random.Range(2,10), Random.Range(2, 10)); ;
         }
 
         StartCoroutine(decreaseWaitingTime());
