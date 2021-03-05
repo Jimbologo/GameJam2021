@@ -32,6 +32,12 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private float lookSpeed = 1;
 
+    [SerializeField]
+    private bool isWater = false;
+
+    [SerializeField]
+    private Transform liquidContainer;
+
     private void Update()
     {
         if(!isActive)
@@ -45,14 +51,26 @@ public class Spawner : MonoBehaviour
 
             if(spawnerWaitTimer <= 0)
             {
+                if(isWater && liquidContainer.GetComponent<MCBlob>().BlobObjectsLocations.Count > 6)
+                {
+                    return;
+                }
                 spawnerWaitTimer = spawnerWaitTime;
                 GameObject newMarsh = Instantiate(spawnObjPrefab, barrel.position, Quaternion.Euler(Random.Range(0,180), Random.Range(0, 180), Random.Range(0, 180))); ;
-                newMarsh.transform.parent = null;
+
+                if (isWater)
+                {
+                    newMarsh.transform.parent = liquidContainer;
+                }
                 newMarsh.GetComponent<Rigidbody>().AddForce(barrel.transform.forward * fireForce, ForceMode.Impulse);
                 marshmelows.Add(newMarsh);
                 audioSource.clip = marshSpawn;
                 audioSource.Play(); 
-
+                if(isWater)
+                {
+                    liquidContainer.GetComponent<MCBlob>().BlobObjectsLocations.Add(newMarsh.GetComponent<SphereCollider>());
+                    newMarsh.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                }
             }
         }
         Vector3 lookDir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);

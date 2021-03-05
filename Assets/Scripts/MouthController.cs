@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouthController : MonoBehaviour
 {
-    List<Transform> objects = new List<Transform>();
+    List<int> objects = new List<int>();
     [SerializeField]
     private Head headController;
 
@@ -23,7 +23,7 @@ public class MouthController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         other.transform.parent = transform;
-        objects.Add(other.transform);
+        objects.Add(0);
 
         if(objects.Count >= headController.maxmarshCount && !isDrowning)
         {
@@ -32,6 +32,8 @@ public class MouthController : MonoBehaviour
             audioSource.clip = mouthShake;
             audioSource.Play();
         }
+
+        Destroy(other.gameObject);
     }
 
     private void Update()
@@ -44,11 +46,6 @@ public class MouthController : MonoBehaviour
 
     public void ClearObjs()
     {
-        for (int i = 0; i < objects.Count; ++i)
-        {
-            if(objects[i] != null)
-                Destroy(objects[i].gameObject);
-        }
         objects.Clear();
     }
 }

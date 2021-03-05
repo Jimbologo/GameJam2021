@@ -19,6 +19,12 @@ public class MarshmellowDrop : MonoBehaviour
     {
         if(transform.position.y <= -10)
         {
+            MCBlob blob = FindObjectOfType<MCBlob>();
+            SphereCollider sphereCollider = GetComponent<SphereCollider>();
+            if (blob && sphereCollider)
+            {
+                blob.BlobObjectsLocations.Remove(sphereCollider);
+            }
             Destroy(this.gameObject);
         }
     }
