@@ -14,7 +14,8 @@ public class MarshmellowDrop : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         audioSource.clip = marshHit;
-        audioSource.Play();
+        if(audioSource && audioSource.enabled)
+            audioSource.Play();
     }
     // Update is called once per frame
     void Update()

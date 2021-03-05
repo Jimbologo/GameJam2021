@@ -1223,6 +1223,8 @@ MonoBehaviour:
   mouthShake: {fileID: 8300000, guid: beadbd3e323e6a44cab533cf85e51307, type: 3}
   waterText: {fileID: 7812357598484631884}
   marshText: {fileID: 7438854330297456062}
+  waterLeft: 0
+  marshLeft: 0
 --- !u!65 &8633260065793361345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2330,7 +2332,11 @@ MonoBehaviour:
   audioSource: {fileID: 4657264556165160202}
   mouthOpen: {fileID: 8300000, guid: f4e681f93814560448cc439a4e356eba, type: 3}
   mouthClose: {fileID: 8300000, guid: 0397b9dca29e93d4aa25c1614f3cf04c, type: 3}
-  countText: {fileID: 7812357598484631884}
+  mouthChew: {fileID: 8300000, guid: 972e5e090317abf498fc79f67daa59b9, type: 3}
+  deadJim: {fileID: 8300000, guid: 5f480fdb074c2704c9270684f2c09c36, type: 3}
+  paused: 0
+  skinnedMesh: {fileID: 1089233467027359126}
+  skinDeadColor: {r: 0.31763974, g: 0.569394, b: 0.8113208, a: 0}
 --- !u!82 &4657264556165160202
 AudioSource:
   m_ObjectHideFlags: 0

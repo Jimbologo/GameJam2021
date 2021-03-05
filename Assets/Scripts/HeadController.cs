@@ -9,7 +9,7 @@ public class HeadController : MonoBehaviour
     private GameObject headPrefab;
     
 
-    private List<Transform> heads = new List<Transform>();
+    public List<Transform> heads = new List<Transform>();
     private List<int> headIndexs = new List<int>();
 
     [SerializeField]
@@ -31,6 +31,8 @@ public class HeadController : MonoBehaviour
 
     [SerializeField]
     private float decreaseTimeSpeed = 0.1f;
+
+    public int deadCount = 0;
 
     private void Start()
     {
@@ -63,6 +65,16 @@ public class HeadController : MonoBehaviour
     public void UpdateShiftTimer(float time)
     {
         shiftTimer.text = "" + time;
+    }
+
+    public void AddDead()
+    {
+        deadCount++;
+        if(deadCount >= numberOfHeads)
+        {
+            //Show Failed screen
+            SceneManagment.instance.LoadScene(CustomScenes.DeathScreen);
+        }
     }
 
 

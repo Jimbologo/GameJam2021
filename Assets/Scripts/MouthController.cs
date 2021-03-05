@@ -26,8 +26,10 @@ public class MouthController : MonoBehaviour
     [SerializeField]
     private TextMeshPro marshText;
 
-    private int waterLeft = 0;
-    private int marshLeft = 0;
+    public int waterLeft = 0;
+    public int marshLeft = 0;
+
+    bool chewed = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -51,6 +53,10 @@ public class MouthController : MonoBehaviour
             anim.Play(shakeHeadAnim.name);
             audioSource.clip = mouthShake;
             audioSource.Play();
+
+            //headController.StopAllCoroutines();
+            headController.active = false;
+            StartCoroutine(headController.RemovePerson());
         }
 
         waterLeft = Mathf.Clamp(waterLeft, 0, 100);
@@ -59,6 +65,17 @@ public class MouthController : MonoBehaviour
         marshText.text = "" + marshLeft;
 
         Destroy(other.gameObject);
+
+        if (waterLeft <= 0 && marshLeft <= 0 && !chewed)
+        {
+            chewed = true;
+            audioSource.clip = headController.mouthChew;
+            audioSource.Play();
+        }
+        else if(chewed)
+        {
+            chewed = false;
+        }
     }
 
     public void ResetObj()
